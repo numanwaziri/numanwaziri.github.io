@@ -1,7 +1,7 @@
 ---
 title: "Analyzing Birth & Naming Trends: A Data-Driven Exploration"
-date: 2023-05-23 11:33:00 -0400
-categories: [Blogging, Demo]
+date: 2023-09-23 11:33:00 -0400
+categories: [Data Analysis, Births & Naming Anlysis]
 img_path: /assets/
 math: true
 image:
@@ -17,26 +17,34 @@ This project aims to examine this data, uncovering intriguing patterns and trend
 The analysis conducted in this study relies on the Python programming language for data manipulation and visualization tasks. The following libraries were utilized throughout the project:
 
 ```python
-
-import zipfile
-import requests
-
+# for data manipulation
 import pandas as pd
 import numpy as np
 
-import seaborn as sns
+# for visualizations
 import matplotlib.pyplot as plt
+import seaborn as sns
 import matplotlib.ticker as ticker
 from matplotlib import lines, patches
 import matplotlib.patheffects as path_effects
+
+
+# for title image
+from wordcloud import WordCloud, ImageColorGenerator
+from PIL import Image
+
+# miscellaneous
+import zipfile
+import requests
+import os
 ```
 
 > The primary objective of this project is to demonstrate the remarkable potential of Python in achieving highly effective `static visualizations`.
-{: .prompt-info }
+> {: .prompt-info }
 
 ### **Understanding the Data**
 
-The SSA, a government agency responsible for administering social security programs, has been collecting and maintaining data related to baby names for over a century. With over **6 million** entries This comprehensive but relatively simple dataset covers a wide range of information, including the state, gender, year, name, and number of births associated with each name.
+The SSA, the government agency responsible for administering social security programs, has been collecting and maintaining data related to baby names for over a century. With over **6 million** entries This comprehensive but relatively simple dataset covers a wide range of information, including the state, gender, year, name, and number of births associated with each name.
 To give you a taste of this valuable resource, let's take a closer look at the format of the data. Each entry in the dataset represents a unique baby name registered with the SSA by year and state, and includes the following details:
 
 <div class= "scrollable-table">
@@ -137,7 +145,7 @@ The source data obtained from the SSA website consists of a collection of TXT fi
 
 ```python
 url = "https://www.ssa.gov/oact/babynames/state/namesbystate.zip"
-df = get_transform_data(url)
+df = download_data(url)
 ```
 
 <details>
@@ -145,9 +153,14 @@ df = get_transform_data(url)
 
 {% highlight python %}
 
-def get_transform_data(url): ## Initalizations # Relative path to store downloaded file
-file_path = 'Data/dataset.zip'
-df = None
+def get_transform_data(url): # Create folder if don't exist already
+folder_path = 'Data'
+if not os.path.exists(folder_path):
+os.makedirs(folder_path)
+
+    # Path to download the file to
+    file_path = 'Data/dataset.zip'
+    df = None
 
     # Define a mapping from abberivated to full state names
     state_dict = {
@@ -166,7 +179,6 @@ df = None
         'WI': 'Wisconsin','WY': 'Wyoming', "DC": "Columbia"
     }
 
-    ## Download and Transform
     # Send a GET request to the URL
     response = requests.get(url)
 
@@ -198,7 +210,7 @@ df = None
   </details>
 
 > For a detailed view of the code for data preprocessing, transformation and visualizations, you can visit the <a href="https://github.com/numanwaziri/NamingPatterns-Analysis" style="text-decoration: none;" target="_blank">GitHub repository</a>
-{: .prompt-info }
+> {: .prompt-info }
 
 ## **Inferential Analysis**
 
@@ -224,7 +236,7 @@ Baby names and power law distribution are closely related. **In the context of n
 This observed pattern is known as the <b >_Matthew effect_</b>, where the popular names become even more popular over time, while the less popular names continue to decline in popularity. This effect is driven by social influence and cultural trends, which can amplify the initial differences in popularity between names.
 
 > Given the primary focus of this project on visualizations, the goodness of fit will not be quantified, and instead, the fit between the data and the power law distribution will be visually represented using a log-log plot
-{: .prompt-warning }
+> {: .prompt-warning }
 > To **validate** the power-law hypothesis, One method is to **compare** the probability densities between the **theoretical** power-law distribution and the **empirical** probability distribution of the data with a <a href="https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot" style="text-decoration: none;" target="_blank">Q-Q Plot</a> having logarithmic axes also referred to as log-log plot.
 
 1. The theoretical probability density can be employed once we derive the $\alpha$ parameter for observed data - Fit the power-law distribution to data using <a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation" style="text-decoration: none;" target="_blank">maximum likelihood estimation</a> to retrieve the scaling parameter $\alpha$ and utilize the probability density function.
