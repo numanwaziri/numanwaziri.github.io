@@ -1,6 +1,6 @@
 ---
 title: "Analyzing Birth & Naming Trends: A Data-Driven Exploration"
-date: 2023-09-24 11:33:00 -0400
+date: 2023-09-21 11:33:00 -0400
 categories: [Data Analysis, Births & Naming Anlysis]
 img_path: /assets/
 math: true
@@ -149,11 +149,11 @@ df = download_data(url)
 ```
 
 <details>
-    <summary>Click here to have a closer look into the code for <b><code>get_transform_data</code></b> function</summary>
+    <summary>Click here to have a closer look into the code for <b><code>download_data</code></b> function</summary>
 
 {% highlight python %}
 
-def get_transform_data(url): # Create folder if don't exist already
+def get_transform_data(url):
 
     # Create the path folder if not already there
     folder_path = 'Data'
