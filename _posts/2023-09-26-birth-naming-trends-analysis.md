@@ -1,6 +1,6 @@
 ---
 title: "Analyzing Birth & Naming Trends: A Data-Driven Exploration"
-date: 2023-09-21 11:33:00 -0400
+date: 2023-09-26 11:33:00 -0400
 categories: [Data Analysis, Births & Naming Anlysis]
 img_path: /assets/
 math: true
