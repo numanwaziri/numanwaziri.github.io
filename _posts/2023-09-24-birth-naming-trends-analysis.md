@@ -1,6 +1,6 @@
 ---
 title: "Analyzing Birth & Naming Trends: A Data-Driven Exploration"
-date: 2023-09-23 11:33:00 -0400
+date: 2023-09-24 11:33:00 -0400
 categories: [Data Analysis, Births & Naming Anlysis]
 img_path: /assets/
 math: true
@@ -40,7 +40,7 @@ import os
 ```
 
 > The primary objective of this project is to demonstrate the remarkable potential of Python in achieving highly effective `static visualizations`.
-> {: .prompt-info }
+{: .prompt-info }
 
 ### **Understanding the Data**
 
@@ -154,9 +154,11 @@ df = download_data(url)
 {% highlight python %}
 
 def get_transform_data(url): # Create folder if don't exist already
-folder_path = 'Data'
-if not os.path.exists(folder_path):
-os.makedirs(folder_path)
+
+    # Create the path folder if not already there
+    folder_path = 'Data'
+    if not os.path.exists(folder_path):
+    os.makedirs(folder_path)
 
     # Path to download the file to
     file_path = 'Data/dataset.zip'
@@ -210,7 +212,7 @@ os.makedirs(folder_path)
   </details>
 
 > For a detailed view of the code for data preprocessing, transformation and visualizations, you can visit the <a href="https://github.com/numanwaziri/NamingPatterns-Analysis" style="text-decoration: none;" target="_blank">GitHub repository</a>
-> {: .prompt-info }
+{: .prompt-info }
 
 ## **Inferential Analysis**
 
@@ -236,7 +238,7 @@ Baby names and power law distribution are closely related. **In the context of n
 This observed pattern is known as the <b >_Matthew effect_</b>, where the popular names become even more popular over time, while the less popular names continue to decline in popularity. This effect is driven by social influence and cultural trends, which can amplify the initial differences in popularity between names.
 
 > Given the primary focus of this project on visualizations, the goodness of fit will not be quantified, and instead, the fit between the data and the power law distribution will be visually represented using a log-log plot
-> {: .prompt-warning }
+{: .prompt-warning }
 > To **validate** the power-law hypothesis, One method is to **compare** the probability densities between the **theoretical** power-law distribution and the **empirical** probability distribution of the data with a <a href="https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot" style="text-decoration: none;" target="_blank">Q-Q Plot</a> having logarithmic axes also referred to as log-log plot.
 
 1. The theoretical probability density can be employed once we derive the $\alpha$ parameter for observed data - Fit the power-law distribution to data using <a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation" style="text-decoration: none;" target="_blank">maximum likelihood estimation</a> to retrieve the scaling parameter $\alpha$ and utilize the probability density function.
