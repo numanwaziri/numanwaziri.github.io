@@ -2,15 +2,16 @@
 title: "Analyzing Birth & Naming Trends: A Data-Driven Exploration"
 date: 2023-09-13 11:33:00 -0400
 categories: [Data Analysis, Births & Naming Analysis]
-img_path: /assets/
+img_path: /assets/post1
 math: true
 image:
   path: /title_dark.png
   # alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
+> **Note:** For a detailed view of the code for data preprocessing, transformation and visualizations, you can visit the [GitHub repository](https://github.com/numanwaziri/NamingPatterns-Analysis){:target="_blank"}
+{: .prompt-info }
 
 ## **Introduction**
-
 In a world filled with unique and diverse names, have you ever wondered how the popularity of names changed over the years? or how the flactuations in birth rate affected the naming patterns? Thanks to the Social Security Administration (SSA), we can dive into a treasure trove of data that provides fascinating insights into baby names. This allows data enthusiasts to analyze the the naming trends across different regions of the United States.
 This project aims to examine this data, uncovering intriguing patterns and trends in birth trends and naming practices in the U.S.
 
@@ -211,8 +212,7 @@ def get_transform_data(url):
 
   </details>
 
-> For a detailed view of the code for data preprocessing, transformation and visualizations, you can visit the <a href="https://github.com/numanwaziri/NamingPatterns-Analysis" style="text-decoration: none;" target="_blank">GitHub repository</a>
-{: .prompt-info }
+
 
 ## **Inferential Analysis**
 
